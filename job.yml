@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: report-generator
+spec:
+  template:
+    spec:
+      containers:
+      - name: pi
+        image: bash
+        command: ["echo", "Report generation done"]
+      restartPolicy: Never  
+  backoffLimit: 4

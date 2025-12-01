@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: log-pod
+spec:
+  containers:
+  - name: nginx
+    image: nginx:latest
+    ports:
+    - containerPort: 80
+  tolerations:
+  - key: "role"
+    operator: "Equal"
+    value: "logging"
+    effect: "NoSchedule"

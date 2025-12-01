@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: daily-cleanup
+spec:
+  schedule: "0 2 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: hello
+            image: alpine
+            imagePullPolicy: IfNotPresent
+            args: ["rm -rf /tmp/*"]
+          restartPolicy: OnFailure
